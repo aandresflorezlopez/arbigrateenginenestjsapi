@@ -3,10 +3,26 @@ version: "3.8"
 services:
   app:
     build: .
-    restart: always
+    depends_on:
+      - db
+    networks:
+      - backend
     ports:
       - "3000:3000"
     volumes:
       - .:/usr/src
       - /usr/src/node_modules
     command: npm start
+
+  db:
+    networks:
+      - backend
+    environment:
+      - POSTGRES_PASSWORD=test
+    ports:
+      - 2401:5432
+    image: postgres
+
+networks:
+  backend:
+    name: nestjsnetwork
