@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Rates } from './rates/rates.entity';
+import { RatesService } from './rates/rates.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly ratesService: RatesService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async getHello(): Promise<Rates[]> {
+    return await this.ratesService.findAll();
   }
 }
