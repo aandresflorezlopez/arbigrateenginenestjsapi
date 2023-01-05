@@ -1,24 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { RatesService } from '../rates/rates.service';
 import { Repository, Not } from 'typeorm';
-import { Rates } from 'src/rates/rates.entity';
+import { Rates } from '../rates/rates.entity';
 import { Arbitrages } from './arbitrages.entity';
 
 @Injectable()
 export class ArbitragesService {
   constructor(
-    @InjectRepository(Rates)
-    private ratesRepository: Repository<Rates>,
     @InjectRepository(Arbitrages)
     private arbitragesRepository: Repository<Arbitrages>,
+    // @InjectRepository(Rates)
+    // private ratesRepository: Repository<Rates>,
+    private readonly ratesService: RatesService,
   ) {}
 
   private async getRate({ fromCurrency, toCurrency }): Promise<Rates> {
-    const rates = await this.ratesRepository.find({
-      where: {
-        fromCurrency,
-        toCurrency,
-      },
+    const rates = await this.ratesService.findOne({
+      fromCurrency,
+      toCurrency,
     });
 
     if (!rates[0]) {
@@ -74,6 +74,7 @@ export class ArbitragesService {
     const isProfit: boolean = result - amount > 0;
 
     await this.arbitragesRepository.save({
+      currencyExchange: `${fromCurrency}/${toCurrency}`,
       amount: String(amount),
       message: `Finish transaction with ${result}`,
     });

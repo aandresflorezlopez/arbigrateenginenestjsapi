@@ -38,12 +38,12 @@ services:
       - backend
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=rates
+      - MYSQL_DATABASE=rates-tests
     restart: always
     expose:
       - "3306"
     ports:
-      - '2401:3306'
+      - '2501:3306'
     healthcheck:
       test: mysqladmin -p$$MYSQL_ROOT_PASSWORD ping -h 127.0.0.1
       interval: 5s

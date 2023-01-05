@@ -14,8 +14,13 @@ export class RatesService {
     return this.ratesRepository.find();
   }
 
-  findOne(id: number): Promise<Rates> {
-    return this.ratesRepository.findOneBy({ id });
+  findOne({ fromCurrency, toCurrency }): Promise<Rates[]> {
+    return this.ratesRepository.find({
+      where: {
+        fromCurrency,
+        toCurrency,
+      },
+    });
   }
 
   async remove(id: string): Promise<void> {
