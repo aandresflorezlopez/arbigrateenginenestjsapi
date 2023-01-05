@@ -1,23 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Rates } from './rates/rates.entity';
+import config from 'ormconfig';
+
 import { RatesHttpModule } from './rates-http/rates-http.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'db',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'rates',
-      entities: [Rates],
-      synchronize: true,
-    }),
-    RatesHttpModule,
-  ],
+  imports: [TypeOrmModule.forRoot(config), RatesHttpModule],
   controllers: [],
   providers: [],
 })

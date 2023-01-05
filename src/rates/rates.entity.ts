@@ -17,12 +17,6 @@ export class Rates {
   @Column()
   toRate: string;
 
-  @Column()
-  buyRate: string;
-
-  @Column()
-  sellRate: string;
-
   @Column({ default: true })
   isActive: boolean;
 }
