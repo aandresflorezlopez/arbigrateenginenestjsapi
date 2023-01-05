@@ -17,6 +17,11 @@ export class Arbitrages {
   @Column()
   amount: string;
 
+  @Column({
+    nullable: true,
+  })
+  message: string;
+
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',

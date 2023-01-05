@@ -17,11 +17,8 @@ export class Rates {
   @Column({ name: 'to_currency' })
   toCurrency: string;
 
-  @Column({ name: 'from_rate' })
-  fromRate: string;
-
-  @Column({ name: 'to_rate' })
-  toRate: string;
+  @Column()
+  rate: string;
 
   @Column({ name: 'is_active', default: true })
   isActive: boolean;

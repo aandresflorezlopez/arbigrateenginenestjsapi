@@ -10,28 +10,34 @@ export default class CreateRates implements Seeder {
       .into(Rates)
       .values([
         {
+          fromCurrency: 'USD',
+          toCurrency: 'COP',
+          rate: '4900',
+        },
+        {
           fromCurrency: 'COP',
           toCurrency: 'USD',
-          fromRate: '4900',
-          toRate: '0,00020',
+          rate: '0.00020',
         },
         {
-          fromCurrency: 'EUR',
+          fromCurrency: 'COP',
+          toCurrency: 'BRL',
+          rate: '0.0011',
+        },
+        {
+          fromCurrency: 'BRL',
+          toCurrency: 'COP',
+          rate: '922',
+        },
+        {
+          fromCurrency: 'BRL',
           toCurrency: 'USD',
-          fromRate: '0,741',
-          toRate: '1,1586',
+          rate: '0.19',
         },
         {
-          fromCurrency: 'EUR',
-          toCurrency: 'GBP',
-          fromRate: '0,888',
-          toRate: '1,4600',
-        },
-        {
-          fromCurrency: 'GBP',
-          toCurrency: 'USD',
-          fromRate: '1,6000',
-          toRate: '0,666',
+          fromCurrency: 'USD',
+          toCurrency: 'BRL',
+          rate: '5.39',
         },
       ])
       .execute();
