@@ -11,6 +11,7 @@ const config: DataSourceOptions = {
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DB,
   entities: [__dirname + '/src/**/*.entity{.ts,.js}'],
+  migrations: [__dirname + '/src/**/*.migration{.ts,.js}'],
   synchronize: true,
 };
 
