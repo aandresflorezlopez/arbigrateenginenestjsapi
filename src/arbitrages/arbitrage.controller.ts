@@ -1,4 +1,10 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { ArbitrageDto } from 'src/dtos/arbitrage.dto';
 import { ArbitragesService } from './arbitrages.service';
 
@@ -10,12 +16,16 @@ export class ArbitragesController {
     const amount = Number(body.amount);
     const [fromCurrency, toCurrency] = body.currencyPair.split('/');
 
-    const finalAmount = await this.arbitrageService.calculateArbitrageAmount({
-      fromCurrency,
-      toCurrency,
-      amount,
-    });
+    try {
+      const finalAmount = await this.arbitrageService.calculateArbitrageAmount({
+        fromCurrency,
+        toCurrency,
+        amount,
+      });
 
-    return `hello ${finalAmount}`;
+      return `hello ${finalAmount}`;
+    } catch (e) {
+      throw new HttpException(e.message, HttpStatus.NOT_FOUND, { cause: e });
+    }
   }
 }

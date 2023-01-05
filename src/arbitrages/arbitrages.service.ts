@@ -13,6 +13,27 @@ export class ArbitragesService {
     private arbitragesRepository: Repository<Arbitrages>,
   ) {}
 
+  private async getRate({ fromCurrency, toCurrency }): Promise<Rates> {
+    const rates = await this.ratesRepository.find({
+      where: {
+        fromCurrency,
+        toCurrency,
+      },
+    });
+
+    if (!rates[0]) {
+      await this.arbitragesRepository.save({
+        currencyExchange: `${fromCurrency}/${toCurrency}`,
+        amount: '0',
+        message: `There is no rates for ${fromCurrency} and ${toCurrency}`,
+      });
+
+      throw new Error(`there is no rates for ${fromCurrency}`);
+    }
+
+    return rates[0];
+  }
+
   async calculateArbitrageAmount({
     fromCurrency,
     toCurrency,
@@ -28,36 +49,24 @@ export class ArbitragesService {
       message: `Start transaction with ${amount}`,
     });
 
-    // USD -> COP
-    const rates = await this.ratesRepository.find({
-      where: {
-        fromCurrency,
-        toCurrency,
-      },
-    });
-    const intialRate = rates[0];
+    // First exchange
+    const intialRate = await this.getRate({ fromCurrency, toCurrency });
     const { rate: rateBase, toCurrency: intialToCurrency } = intialRate;
 
-    // COP -> BRL
-    const currencyExchanges = await this.ratesRepository.find({
-      where: {
-        fromCurrency: intialToCurrency,
-        toCurrency: Not(fromCurrency),
-      },
+    // Bridge exchange
+    const currencyExchanges = await this.getRate({
+      fromCurrency: intialToCurrency,
+      toCurrency: Not(fromCurrency),
     });
-
     const { rate: firstRateExchange, toCurrency: firstExchangeToCurrency } =
-      currencyExchanges[0];
+      currencyExchanges;
 
-    // BRL -> USD
-    const arbitrageExchanges = await this.ratesRepository.find({
-      where: {
-        fromCurrency: firstExchangeToCurrency,
-        toCurrency: fromCurrency,
-      },
+    // Final exchange
+    const arbitrageExchanges = await this.getRate({
+      fromCurrency: firstExchangeToCurrency,
+      toCurrency: fromCurrency,
     });
-
-    const { rate: finalRate } = arbitrageExchanges[0];
+    const { rate: finalRate } = arbitrageExchanges;
 
     const result: number =
       amount * Number(rateBase) * Number(firstRateExchange) * Number(finalRate);
