@@ -21,7 +21,9 @@ describe('Rates (e2e)', () => {
     return request(app.getHttpServer())
       .post('/arbitrages')
       .send({ amount: '10000', currencyPair: 'USD/COP' })
-      .expect(201)
-      .expect('hello 10241');
+      .expect(200)
+      .expect(
+        `Exchange COP: 4900, Exchange BRL: 0.0011, USD-Change: 0.19, (Buy 4900 in COP, Buy 0.0011 in BRL and Buy 0.19 in BRL) profit: 241`,
+      );
   });
 });

@@ -25,8 +25,8 @@ describe('Rates (e2e)', () => {
         toCurrency: 'COP',
         rate: '4900',
         isActive: true,
-        created_at: '2023-01-06T02:40:40.899Z',
-        updated_at: '2023-01-06T02:40:40.899Z',
+        created_at: '2023-01-06T08:30:13.976Z',
+        updated_at: '2023-01-06T08:30:13.976Z',
       },
       {
         id: 2,
@@ -34,8 +34,8 @@ describe('Rates (e2e)', () => {
         toCurrency: 'USD',
         rate: '0.00020',
         isActive: true,
-        created_at: '2023-01-06T02:40:40.899Z',
-        updated_at: '2023-01-06T02:40:40.899Z',
+        created_at: '2023-01-06T08:30:13.976Z',
+        updated_at: '2023-01-06T08:30:13.976Z',
       },
       {
         id: 3,
@@ -43,8 +43,8 @@ describe('Rates (e2e)', () => {
         toCurrency: 'BRL',
         rate: '0.0011',
         isActive: true,
-        created_at: '2023-01-06T02:40:40.899Z',
-        updated_at: '2023-01-06T02:40:40.899Z',
+        created_at: '2023-01-06T08:30:13.976Z',
+        updated_at: '2023-01-06T08:30:13.976Z',
       },
       {
         id: 4,
@@ -52,8 +52,8 @@ describe('Rates (e2e)', () => {
         toCurrency: 'COP',
         rate: '922',
         isActive: true,
-        created_at: '2023-01-06T02:40:40.899Z',
-        updated_at: '2023-01-06T02:40:40.899Z',
+        created_at: '2023-01-06T08:30:13.976Z',
+        updated_at: '2023-01-06T08:30:13.976Z',
       },
       {
         id: 5,
@@ -61,8 +61,8 @@ describe('Rates (e2e)', () => {
         toCurrency: 'USD',
         rate: '0.19',
         isActive: true,
-        created_at: '2023-01-06T02:40:40.899Z',
-        updated_at: '2023-01-06T02:40:40.899Z',
+        created_at: '2023-01-06T08:30:13.976Z',
+        updated_at: '2023-01-06T08:30:13.976Z',
       },
       {
         id: 6,
@@ -70,8 +70,8 @@ describe('Rates (e2e)', () => {
         toCurrency: 'BRL',
         rate: '5.39',
         isActive: true,
-        created_at: '2023-01-06T02:40:40.899Z',
-        updated_at: '2023-01-06T02:40:40.899Z',
+        created_at: '2023-01-06T08:30:13.976Z',
+        updated_at: '2023-01-06T08:30:13.976Z',
       },
     ];
 

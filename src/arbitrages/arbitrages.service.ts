@@ -40,7 +40,7 @@ export class ArbitragesService {
     fromCurrency: string;
     toCurrency: string;
     amount: number;
-  }): Promise<number> {
+  }): Promise<any> {
     await this.arbitragesRepository.save({
       currencyExchange: `${fromCurrency}/${toCurrency}`,
       amount: String(amount),
@@ -77,11 +77,23 @@ export class ArbitragesService {
       message: `Finish transaction with ${result}`,
     });
 
-    // const arbitrageAnalisis = {
-    //   isProfit,
-    //   profit: isProfit ? result - amount : 0,
-    // };
+    const arbitrageAnalisis = {
+      isProfit,
+      profit: isProfit ? result - amount : 0,
+      firstExchange: {
+        name: toCurrency,
+        rate: rateBase,
+      },
+      bridgeExchange: {
+        name: firstExchangeToCurrency,
+        rate: firstRateExchange,
+      },
+      finalExchange: {
+        name: firstExchangeToCurrency,
+        rate: finalRate,
+      },
+    };
 
-    return result;
+    return arbitrageAnalisis;
   }
 }
