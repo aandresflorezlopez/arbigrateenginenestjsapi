@@ -1,7 +1,3 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
@@ -24,26 +20,43 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project was built with [Nest](https://github.com/nestjs/nest).
+
+## Requeriments
+
+- Docker
+- nodejs LTS
 
 ## Installation
 
 ```bash
-$ npm install
+$ git clone git@github.com:aandresflorezlopez/arbigrateenginenestjsapi.git
+$ docker-compose build
+$ docker-compose up -d
 ```
 
-## Running the app
+_note_: wait until the _app_ service can connnect with the database. I need to give some seconds until the database service is already done.
+
+## Run seeders
+
+```bash
+$ docker exec -it arbigrateenginenestjsapi-app-1 npm run seed:run
+```
+
+_note_: make sure the container name. It could be change if you modify the repository name. To see the container name, run:
+
+```bash
+$ docker ps
+```
+
+## Running the app without docker
 
 ```bash
 # development
 $ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
+
+_note_: we need to run a container with the database
 
 ## Test
 
@@ -53,20 +66,11 @@ $ npm run test
 
 # e2e tests
 $ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Andres Florez Lopez](https://andresflorezlopez.com)
 
 ## License
 
