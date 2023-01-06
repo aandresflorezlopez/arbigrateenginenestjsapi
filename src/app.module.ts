@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { DataSource } from 'typeorm';
 
-import config from 'ormconfig';
+import config from '../ormconfig';
 
 import { RatesHttpModule } from './rates-http/rates-http.module';
 import { ArbitragesModule } from './arbitrages/arbitrage.module';

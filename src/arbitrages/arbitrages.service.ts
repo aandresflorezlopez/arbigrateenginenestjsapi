@@ -10,8 +10,6 @@ export class ArbitragesService {
   constructor(
     @InjectRepository(Arbitrages)
     private arbitragesRepository: Repository<Arbitrages>,
-    // @InjectRepository(Rates)
-    // private ratesRepository: Repository<Rates>,
     private readonly ratesService: RatesService,
   ) {}
 

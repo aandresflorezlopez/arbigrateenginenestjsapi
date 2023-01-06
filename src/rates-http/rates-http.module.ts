@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { RatesModule } from 'src/rates/rates.module';
-import { RatesService } from 'src/rates/rates.service';
-import { RatesController } from 'src/rates/rates.controller';
+import { RatesModule } from '../rates/rates.module';
+import { RatesService } from '../rates/rates.service';
+import { RatesController } from '../rates/rates.controller';
 
 @Module({
   imports: [RatesModule],
