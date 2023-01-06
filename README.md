@@ -56,6 +56,12 @@ _note_: make sure the container name. It could be change if you modify the repos
 $ docker ps
 ```
 
+Currency exchange available for the challenge are:
+
+- USD/COP
+- COP/BRL
+- BRL/USD
+
 ## Running the app without docker
 
 ```bash
@@ -73,6 +79,36 @@ $ npm run test
 
 # e2e tests
 $ npm run test:e2e
+```
+
+## Enpoints
+
+```bash
+# arbitrage /POST endpoint
+$ localhost:3000/arbitrages
+
+body: {
+  currencyPair: 'USD/COP',
+  amount: 10
+}
+```
+
+```bash
+# rates /GET endpoint
+$ localhost:3000/rates
+```
+
+## environtment
+
+```
+# database
+# # db: docker container host; localhost: local host;
+MYSQL_HOST=
+# # container port: 3306 | local client port: 2401"
+MYSQL_PORT=
+MYSQL_USER='root'
+MYSQL_PASSWORD='root'
+MYSQL_DB='rates'
 ```
 
 ## Stay in touch
