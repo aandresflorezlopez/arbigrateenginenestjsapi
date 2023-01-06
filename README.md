@@ -27,6 +27,13 @@ This project was built with [Nest](https://github.com/nestjs/nest).
 - Docker
 - nodejs LTS
 
+## Tech stack
+
+- nestjs
+- docker
+- nodejs
+- jest
+
 ## Installation
 
 ```bash
