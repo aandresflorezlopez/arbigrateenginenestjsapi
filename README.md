@@ -111,6 +111,10 @@ MYSQL_PASSWORD='root'
 MYSQL_DB='rates'
 ```
 
+## transactions
+
+./dump-transactons.csv
+
 ## Stay in touch
 
 - Author - [Andres Florez Lopez](https://andresflorezlopez.com)
