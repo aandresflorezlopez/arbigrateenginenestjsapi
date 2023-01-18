@@ -1,4 +1,10 @@
-export interface ArbitrageDto {
-  currencyPair: string;
-  amount: string;
+import { IsString, IsNotEmpty } from 'class-validator';
+
+export class ArbitrageDto {
+  @IsString()
+  @IsNotEmpty()
+  readonly currencyPair: string;
+
+  @IsNotEmpty()
+  readonly amount: string;
 }

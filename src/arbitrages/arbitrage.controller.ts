@@ -6,7 +6,7 @@ import {
   HttpStatus,
   HttpCode,
 } from '@nestjs/common';
-import { ArbitrageDto } from 'src/dtos/arbitrage.dto';
+import { ArbitrageDto } from '../dtos/arbitrage.dto';
 import { ArbitragesService } from './arbitrages.service';
 
 @Controller('arbitrages')
